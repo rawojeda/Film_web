@@ -1,0 +1,27 @@
+{% extends './Plantilla_base.html' %}
+{% block title %} Films {% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>FILMS THAT I NEED TO SEE BEFORE DIE</h1>
+        <div class="table-responsive">
+            <table class="table table-striped"> <!--tabla-->
+                <thead> <!--cabecera-->
+                <tr> <!--fila-->
+                    <th>#</th> <!--columna-->
+                    <th>Pelicula</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for film in peliculas%}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{film}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
