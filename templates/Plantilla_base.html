@@ -15,9 +15,8 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="background-color: #3F3D3D;">
             <div id="icon_menu_main">
                 <a class="navbar" href="/">
-                    <img src="{{ url_for('static',filename='images/popcorn_icon.png') }}">
+                    <img src="{{ url_for('static',filename='images/popcorn_icon.png') }}" class="img-fluid">
                 </a>
-
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +30,7 @@
                         <a class="nav-link btn-lg" href="{{ url_for('contacto')}}">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle btn-lg" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                             Languages
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -41,13 +40,15 @@
                         </ul>
                     </li>
                 </ul>
-
-                <!--
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div id="searcher">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div id="search_button">
+                        <button class="btn btn-outline-success " type="submit">Search</button>
+                    </div>
+
                 </form>
-                -->
             </div>
         </nav>
     </div>

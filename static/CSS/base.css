@@ -8,32 +8,44 @@ th, td{
     text-align: center;
     vertical-align: middle;
 }
-#contenedor{
-    background: #D8D8D8;
-}
-#cabecera{
-    height: 5%;
-    width: 100%;
-    display:flex;
-}
-#icon_menu_main{
-    background:white;
-    width:5%;
-}
-
-#contenido{
-    height: 75%;
-    background: #FFFFFF;
-}
 li {
   width:auto;
   margin: 0% 2% 0% 2%;
 }
-li a {
-  color: white;
-  text-align: center;
+
+#contenedor{
+    background: #D8D8D8;
 }
 
+#cabecera{
+    height: auto;
+    width: auto;
+    display:flex;
+}
+#icon_menu_main{
+    width:auto;
+    margin-left: 1%;
+}
+.d-flex{
+    width:auto;
+    margin-right:5%;
+}
+#searcher{
+    width:auto ;
+    margin-right:1%
+
+}
+#search_button{
+    width:auto;
+}
+
+
+
+
+#contenido{
+    height: auto;
+    background: #FFFFFF;
+}
 #section{
     height: 100%;
     width: 70%;
@@ -46,6 +58,10 @@ li a {
     background: #411A1A;
     float: right;
 }
+
+
+
+
 
 #footer{
     height: 20%;
