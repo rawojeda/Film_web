@@ -9,19 +9,31 @@ th, td{
     vertical-align: middle;
 }
 #contenedor{
-    height:100%;
-    width:100%;
     background: #D8D8D8;
 }
 #cabecera{
-    height: 10%;
+    height: 5%;
     width: 100%;
+    display:flex;
+}
+#icon_menu_main{
+    background:white;
+    width:5%;
 }
 
 #contenido{
-    height: 70%;
+    height: 75%;
     background: #FFFFFF;
 }
+li {
+  width:auto;
+  margin: 0% 2% 0% 2%;
+}
+li a {
+  color: white;
+  text-align: center;
+}
+
 #section{
     height: 100%;
     width: 70%;
