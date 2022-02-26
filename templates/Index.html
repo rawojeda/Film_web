@@ -1,6 +1,8 @@
 {% extends './Plantilla_base.html' %}
 {% block title %} Index {% endblock %}
-
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/index.css') }}">
+{%endblock%}
 {% block body %}
 <div id="contenido">
     <div id="section">

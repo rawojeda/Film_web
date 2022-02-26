@@ -1,0 +1,10 @@
+{% extends './Plantilla_base.html' %}
+{% block title %} {{film_data.nombre}} {% endblock %}
+
+{% block body %}
+<div id="contenido">
+    <h1>{{film_data.nombre}}</h1>
+    <h2>{{film_data.Director}}</h2>
+    <h3>{{film_data.Year}}</h3>
+</div>
+{% endblock %}
