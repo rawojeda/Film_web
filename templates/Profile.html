@@ -1,0 +1,31 @@
+{% extends './Plantilla_base.html' %}
+{% block title %} Profile {% endblock %}
+{% block css %}{% endblock %}
+{% block body %}
+<div id="contenido">
+    <h1>HOLA {{user.0}} AQUÍ TIENES TUS DATOS:</h1>
+    <table class="table table-bordered table-danger " >
+        <thead>
+        <tr>
+            <th scope="col">email</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{user.1}}</td>
+            <td>{{user.2}}</td>
+            <td> <a type="button" class="btn btn-outline-danger" href="/delete/{{user.0}}" >BORRAR USUARIO</a> </td>
+        </tr>
+        <tr>
+            <form method="POST" action="/edit/{{user.0}}">
+                <td><input type="text" name="email" form-control></td>
+                <td><input type="text" name="pass" form-control></td>
+                <td><button type="submit"  class="btn btn-outline-warning">CAMBIAR VALOR</button></td>
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -43,7 +43,6 @@ def suggestions():
 @app.route('/sign_in')
 def sign_in():
     return render_template('Sign_in.html')
-
 @app.route('/add_user',methods=['POST'])
 def add_user():
     if request.method == 'POST':
@@ -52,35 +51,58 @@ def add_user():
         password=request.form['pass']
         cursor = mysql.connection.cursor()
         cursor.execute('INSERT INTO users (USERNAME, EMAIL, PASSWORD) VALUES (%s, %s, %s)', (userName, email, password))
+        print(cursor)
         mysql.connection.commit()
-        flash("Contact added successfully")
         '''permite que se creen los mismos usuarios'''
         return redirect(url_for('home'))
 
+@app.route('/Profile')
+def profile():
+    return render_template('Profile.html')
 
+@app.route('/log_in')
+def log_in():
+    return render_template('Log_in.html')
 
-'''
-@app.route('/film',methods=['POST'])
-def film:
-    data={
-        'name': nombre,
-        'Director': "Martin Escorsese",
-        'Year': 1990
-    }
-    return render_template('film.html', film_data=data)
+@app.route('/enter_user',methods=['POST'])
+def enter_user():
+    if request.method == 'POST':
+        email= request.form['email']
+        password=request.form['pass']
+        cursor=mysql.connection.cursor()
+        cursor.execute('SELECT * FROM users WHERE EMAIL = %s and PASSWORD=%s',(email, password))
+        return render_template('Profile.html', user=cursor.fetchall()[0])
 
-@app.route('/film/<nombre>')
-def film(nombre):
-    data={
-        'name': nombre,
-        'Director': "Martin Escorsese",
-        'Year': 1990
-    }
-    return render_template('film.html', film_data=data)
-'''
+@app.route('/delete/<string:userName>')
+def delete_user(userName):
+    cursor=mysql.connection.cursor()
+    cursor.execute('DELETE FROM users WHERE USERNAME = %s',[userName])
+    mysql.connection.commit()
+    return redirect(url_for('home'))
+
+@app.route('/edit/<string:userName>', methods=['POST'])
+def edit(userName):
+    cursor=mysql.connection.cursor()
+    newEmail= request.form['email']
+    newPass=request.form['pass']
+    if newEmail:
+        if newPass:
+            cursor.execute('UPDATE users SET EMAIL = %s WHERE USERNAME = %s',(newEmail,userName))
+            cursor.execute('UPDATE users SET PASSWORD = %s WHERE USERNAME = %s',(newPass,userName))
+            mysql.connection.commit()
+        else:
+            cursor.execute('UPDATE users SET EMAIL = %s  WHERE USERNAME = %s',(newEmail,userName))
+            mysql.connection.commit()
+    elif newPass:
+        cursor.execute('UPDATE users SET PASSWORD = %s WHERE USERNAME = %s',(newPass,userName))
+        mysql.connection.commit()
+
+    cursor2=mysql.connection.cursor()
+    cursor2.execute('SELECT * FROM users WHERE USERNAME = %s',[userName])
+    return render_template('Profile.html', user=cursor2.fetchall()[0])
+
 def pagina_no_encontrada(error):
     return render_template('NotFound.html')
-    #return redirect(url_for('home'))
 
 if __name__ ==  '__main__':
     app.register_error_handler(404, pagina_no_encontrada)
